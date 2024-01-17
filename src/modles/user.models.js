@@ -4,15 +4,9 @@ import bcrypt from 'bcrypt';
 
 const userSchema = new Schema(
   {
-    watchHistory: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Video',
-      },
-    ],
     userName: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
       lowercase: true,
       trim: true,
@@ -20,20 +14,20 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
       lowercase: true,
       trim: true,
     },
     fullName: {
       type: String,
-      require: true,
+      required: true,
       trim: true,
       index: true,
     },
     avator: {
-      typeof: String, // Cloudinary url
-      require: true,
+      type: String, // Cloudinary url
+      required: true,
     },
     coverImage: {
       type: String,
@@ -45,6 +39,12 @@ const userSchema = new Schema(
     refreshToken: {
       type: String,
     },
+    watchHistory: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Video',
+      },
+    ],
   },
   { timestamps: true }
 );
