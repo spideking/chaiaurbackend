@@ -4,13 +4,14 @@ import { DB_NAME } from './constants.js';
 
 import express from 'express';
 
+// configuring environment variable
 const app = express();
 dotenv.config({
   path: './.env',
 });
 
-//Setting up mongoo db connection instance
-;(async () => {
+// Setting up mongoo db connection instance
+(async () => {
   try {
     const connectionInstance = await mongoose.connect(
       `${process.env.MONGODB_URI}${DB_NAME}`
